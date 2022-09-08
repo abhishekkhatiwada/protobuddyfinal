@@ -1,0 +1,4 @@
+#Wed Sep 07 22:06:18 NPT 2022
+base.0=C\:\\Users\\abhis\\OneDrive\\Documents\\aaaaaaaaa\\protobuddy\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
