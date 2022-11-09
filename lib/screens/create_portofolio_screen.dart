@@ -111,10 +111,10 @@ class CreateProto extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: ListView(
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.grey,
-                  radius: 50,
-                ),
+                // CircleAvatar(
+                //   backgroundColor: Colors.grey,
+                //   radius: 50,
+                // ),
                 SizedBox(
                   height: 5,
                 ),
@@ -425,6 +425,10 @@ class CreateProto extends StatelessWidget {
                               File(image.path),
                               fit: BoxFit.cover,
                             )),
+                ),
+
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),

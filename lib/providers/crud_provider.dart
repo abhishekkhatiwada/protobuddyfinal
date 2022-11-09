@@ -16,6 +16,7 @@ final singleUserStream =
 class CrudProvider {
   CollectionReference dbUser = FirebaseFirestore.instance.collection('users');
   CollectionReference dbPost = FirebaseFirestore.instance.collection('posts');
+  CollectionReference dbSell = FirebaseFirestore.instance.collection('sell');
   Stream<List<User>> getUser() {
     return dbUser.snapshots().map((event) => _getQuery(event));
   }
@@ -175,6 +176,36 @@ class CrudProvider {
 
       await dbPost.doc(postId).delete();
 
+      return 'success';
+    } on FirebaseException catch (err) {
+      return '${err}';
+    }
+  }
+
+  Future<String> addSell(
+      {required String creatorName,
+      required String userId,
+      required String description,
+      required String title,
+      required String projectType,
+      required String money,
+      required XFile file}) async {
+    try {
+      final imageId = DateTime.now().toString();
+      final ref = FirebaseStorage.instance.ref().child('sell/$imageId');
+      final convertFile = File(file.path);
+      await ref.putFile(convertFile);
+      final url = await ref.getDownloadURL();
+      await dbSell.add({
+        'userId': userId,
+        'imageUrl': url,
+        'imageId': imageId,
+        'creatorName': creatorName,
+        'projectType': projectType,
+        'title': title,
+        'description': description,
+        'money': money
+      });
       return 'success';
     } on FirebaseException catch (err) {
       return '${err}';

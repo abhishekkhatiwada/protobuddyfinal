@@ -73,3 +73,24 @@ class Postproto {
       required this.email,
       required this.comments});
 }
+
+class BuySell {
+  late int id;
+  late String userId;
+  late String title;
+  late String description;
+  late String imageId;
+  late String creatorName;
+  late String projectType;
+  late String money;
+
+  BuySell(
+      {required this.id,
+      required this.userId,
+      required this.title,
+      required this.description,
+      required this.imageId,
+      required this.creatorName,
+      required this.projectType,
+      required this.money});
+}
